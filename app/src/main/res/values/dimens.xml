@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="activity_horizontal_margin">8dp</dimen>
+    <dimen name="activity_vertical_margin">8dp</dimen>
+    <dimen name="font_16">16sp</dimen>
+    <dimen name="top_8dp">8dp</dimen>
+    <dimen name="recyclerview_margin">50dp</dimen>
+    <dimen name="activity_horizontal_margin_small">4dp</dimen>
+</resources>

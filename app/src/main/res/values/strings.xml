@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Movie Catalogue</string>
+    <string name="cari_film">Search Movie…</string>
+    <string name="cari">Search</string>
+    <string name="search_hint">@string/cari</string>
+    <string name="now_playing">Now Playing</string>
+    <string name="upcoming">Upcoming</string>
+    <string name="show_more">More..</string>
+    <string name="menu_lang">Change Language</string>
+</resources>

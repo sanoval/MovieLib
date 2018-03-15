@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Katalog Film</string>
+    <string name="cari_film">Cari film…</string>
+    <string name="cari">Cari</string>
+    <string name="search_hint">@string/cari</string>
+    <string name="now_playing">Sedang Tayang</string>
+    <string name="upcoming">Segera Tayang</string>
+    <string name="show_more">Selengkapnya</string>
+    <string name="menu_lang">Ganti Bahasa</string>
+</resources>
