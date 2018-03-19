@@ -1,13 +1,21 @@
 package com.example.sanov.movielib.model;
 
+import android.database.Cursor;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.provider.ContactsContract;
 
+import com.example.sanov.movielib.db.DatabaseContract;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static android.provider.BaseColumns._ID;
+import static com.example.sanov.movielib.db.DatabaseContract.getColumnDouble;
+import static com.example.sanov.movielib.db.DatabaseContract.getColumnInt;
+import static com.example.sanov.movielib.db.DatabaseContract.getColumnString;
 
 /**
  * Created by sanov on 2/23/2018.
@@ -106,6 +114,10 @@ public class Movie implements Parcelable {
             return new Movie[size];
         }
     };
+
+    public Movie() {
+
+    }
 
     public String getPosterPath() {
         return posterPath;
@@ -259,5 +271,15 @@ public class Movie implements Parcelable {
             parcel.writeByte((byte) 1);
             parcel.writeDouble(voteAverage);
         }
+    }
+
+    public Movie(Cursor cursor) {
+        this.id = getColumnInt(cursor, _ID);
+        this.title = getColumnString(cursor, DatabaseContract.FavColumns.TITLE);
+        this.overview = getColumnString(cursor, DatabaseContract.FavColumns.OVERVIEW);
+        this.releaseDate = getColumnString(cursor, DatabaseContract.FavColumns.DATE);
+        this.posterPath = getColumnString(cursor, DatabaseContract.FavColumns.IMAGE);
+        this.popularity = getColumnDouble(cursor, DatabaseContract.FavColumns.POPULARITY);
+        this.voteAverage = getColumnDouble(cursor, DatabaseContract.FavColumns.RATING);
     }
 }

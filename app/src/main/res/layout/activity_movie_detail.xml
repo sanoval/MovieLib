@@ -1,108 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/movie_detail_container"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.example.sanov.movielib.view.activities.MovieDetailActivity">
+    android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/img_poster"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/ic_launcher" />
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/img_poster"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@mipmap/ic_launcher" />
 
-    <View
-        android:id="@+id/margin_one"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:background="@android:color/darker_gray"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/img_poster" />
+        <View
+            android:id="@+id/margin_one"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@android:color/darker_gray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_poster" />
 
-    <TextView
-        android:id="@+id/tv_label_rating"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="Rating: "
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/margin_one"
-        android:layout_marginLeft="16dp" />
+        <TextView
+            android:id="@+id/tv_label_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/rating"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/margin_one" />
 
-    <TextView
-        android:id="@+id/tv_rating"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        android:text="TextView"
-        app:layout_constraintStart_toEndOf="@+id/tv_label_rating"
-        app:layout_constraintTop_toTopOf="@+id/tv_label_rating"
-        android:layout_marginLeft="80dp" />
+        <TextView
+            android:id="@+id/tv_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="80dp"
+            android:layout_marginStart="80dp"
+            android:text="TextView"
+            app:layout_constraintStart_toEndOf="@+id/tv_label_rating"
+            app:layout_constraintTop_toTopOf="@+id/tv_label_rating" />
 
-    <TextView
-        android:id="@+id/tv_label_popularity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Popularitas :"
-        app:layout_constraintStart_toStartOf="@+id/tv_label_rating"
-        app:layout_constraintTop_toBottomOf="@+id/tv_label_rating" />
+        <TextView
+            android:id="@+id/tv_label_popularity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/popularity"
+            app:layout_constraintStart_toStartOf="@+id/tv_label_rating"
+            app:layout_constraintTop_toBottomOf="@+id/tv_label_rating" />
 
-    <TextView
-        android:id="@+id/tv_popularity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintStart_toStartOf="@+id/tv_rating"
-        app:layout_constraintTop_toTopOf="@+id/tv_label_popularity" />
+        <TextView
+            android:id="@+id/tv_popularity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            app:layout_constraintStart_toStartOf="@+id/tv_rating"
+            app:layout_constraintTop_toTopOf="@+id/tv_label_popularity" />
 
-    <TextView
-        android:id="@+id/tv_label_release_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Tanggal Rilis: "
-        app:layout_constraintStart_toStartOf="@+id/tv_label_popularity"
-        app:layout_constraintTop_toBottomOf="@+id/tv_label_popularity" />
+        <TextView
+            android:id="@+id/tv_label_release_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/release_date"
+            app:layout_constraintStart_toStartOf="@+id/tv_label_popularity"
+            app:layout_constraintTop_toBottomOf="@+id/tv_label_popularity" />
 
-    <TextView
-        android:id="@+id/tv_release_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintStart_toStartOf="@+id/tv_popularity"
-        app:layout_constraintTop_toTopOf="@+id/tv_label_release_date" />
+        <TextView
+            android:id="@+id/tv_release_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            app:layout_constraintStart_toStartOf="@+id/tv_popularity"
+            app:layout_constraintTop_toTopOf="@+id/tv_label_release_date" />
 
-    <TextView
-        android:id="@+id/tv_label_overview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Sinopsis:"
-        app:layout_constraintStart_toStartOf="@+id/tv_label_release_date"
-        app:layout_constraintTop_toBottomOf="@+id/tv_label_release_date" />
+        <TextView
+            android:id="@+id/tv_label_overview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/sinopsys"
+            app:layout_constraintStart_toStartOf="@+id/tv_label_release_date"
+            app:layout_constraintTop_toBottomOf="@+id/tv_label_release_date" />
 
-    <TextView
-        android:id="@+id/tv_overview"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="8dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/tv_release_date"
-        app:layout_constraintTop_toBottomOf="@+id/tv_release_date"
-        android:layout_marginRight="16dp" />
-</android.support.constraint.ConstraintLayout>
+        <TextView
+            android:id="@+id/tv_overview"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="8dp"
+            android:text="TextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tv_release_date"
+            app:layout_constraintTop_toBottomOf="@+id/tv_release_date" />
+
+        <ImageView
+            android:id="@+id/img_fav_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_rating"
+            app:srcCompat="@drawable/ic_favorite_border_black_24dp"
+            tools:ignore="VectorDrawableCompat" />
+    </android.support.constraint.ConstraintLayout>
+
+</ScrollView>

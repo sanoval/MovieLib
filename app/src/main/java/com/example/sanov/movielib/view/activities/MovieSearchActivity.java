@@ -19,6 +19,7 @@ import com.example.sanov.movielib.model.MovieResponse;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -31,6 +32,10 @@ public class MovieSearchActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     MovieAdapter movieAdapter;
+    SearchView searchView;
+    private String keywords;
+    private static final String KEYWORDS = "keywords";
+    List<Movie> movies;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +45,11 @@ public class MovieSearchActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.rv_movie_search);
         setTitle(getResources().getString(R.string.cari));
 
+        if(savedInstanceState != null) {
+            keywords = savedInstanceState.getString(KEYWORDS);
+
+        }
+
     }
 
     @Override
@@ -47,9 +57,15 @@ public class MovieSearchActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.options_menu, menu);
 
-        SearchView searchView =
+        searchView =
                 (SearchView) MenuItemCompat.getActionView(menu.findItem(R.id.search));
         searchView.setQueryHint(getResources().getString(R.string.search_hint));
+        if (keywords != null && !keywords.isEmpty()) {
+            searchView.onActionViewExpanded();
+            searchView.setQuery(keywords, true);
+            searchMovie(keywords);
+            searchView.clearFocus();
+        }
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
@@ -83,7 +99,7 @@ public class MovieSearchActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<MovieResponse> call, Response<MovieResponse> response) {
                 if (response.body() != null) {
-                    List<Movie> movies = response.body().getResults();
+                    movies = response.body().getResults();
                     movieAdapter = new MovieAdapter(movies, R.layout.item_movie, getApplicationContext());
                     recyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(), 2));
                     recyclerView.setAdapter(movieAdapter);
@@ -95,5 +111,11 @@ public class MovieSearchActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString(KEYWORDS, searchView.getQuery().toString());
     }
 }

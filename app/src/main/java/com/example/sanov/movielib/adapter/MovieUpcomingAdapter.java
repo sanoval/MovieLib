@@ -2,7 +2,11 @@ package com.example.sanov.movielib.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.constraint.ConstraintLayout;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,7 +22,12 @@ import com.example.sanov.movielib.model.Movie;
 import com.example.sanov.movielib.view.activities.MovieDetailActivity;
 import com.squareup.picasso.Picasso;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Created by sanov on 3/5/2018.
@@ -42,18 +51,21 @@ public class MovieUpcomingAdapter extends RecyclerView.Adapter<MovieUpcomingAdap
         return new MovieUpcoming(view);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onBindViewHolder(MovieUpcoming holder, final int position) {
         Movie movie = movieUpcoming.get(position);
         String movieTitle = myHelper.ResizeOverview(movie.getTitle(), "title");
         String movieOverview = myHelper.ResizeOverview(movie.getOverview(), "overview");
         String movieDateRelease = movie.getReleaseDate();
+        String newDate = myHelper.ConvertDateFormat(movieDateRelease);
+
         Picasso.with(context).load(BuildConfig.BASE_URL_POSTER_PATH_SMALL + movie.getPosterPath()).into(holder.imgPoster);
 
         holder.tvMovieTitle.setText(movieTitle);
         holder.tvMovieOverview.setText(movieOverview);
-        holder.tvDateRelease.setText(movieDateRelease);
-        holder.btnShowDetail.setOnClickListener(new View.OnClickListener() {
+        holder.tvDateRelease.setText(newDate);
+        holder.cvContainer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent detailMovieIntent = new Intent(context, MovieDetailActivity.class);
@@ -72,7 +84,7 @@ public class MovieUpcomingAdapter extends RecyclerView.Adapter<MovieUpcomingAdap
         ConstraintLayout movieUpcomingLayout;
         ImageView imgPoster;
         TextView tvMovieTitle, tvMovieOverview, tvDateRelease;
-        Button btnShowDetail;
+        CardView cvContainer;
 
         public MovieUpcoming(View view) {
             super(view);
@@ -81,7 +93,7 @@ public class MovieUpcomingAdapter extends RecyclerView.Adapter<MovieUpcomingAdap
             tvDateRelease = view.findViewById(R.id.tv_date_release);
             tvMovieOverview = view.findViewById(R.id.tv_overview);
             tvMovieTitle = view.findViewById(R.id.tv_movie_title);
-            btnShowDetail = view.findViewById(R.id.btn_show_detail);
+            cvContainer = view.findViewById(R.id.cv_container);
         }
     }
 }

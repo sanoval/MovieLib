@@ -8,4 +8,10 @@
     <string name="upcoming">Segera Tayang</string>
     <string name="show_more">Selengkapnya</string>
     <string name="menu_lang">Ganti Bahasa</string>
+    <string name="popularity">Popularitas :</string>
+    <string name="release_date">Tanggal Rilis:</string>
+    <string name="sinopsys">Sinopsis:</string>
+    <string name="rating">Rating:</string>
+    <string name="favorite">Favorit</string>
+    <string name="no_data">DAFTAR FAVORIT MASIH KOSONG</string>
 </resources>

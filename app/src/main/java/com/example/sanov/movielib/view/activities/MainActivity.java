@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.sanov.movielib.R;
+import com.example.sanov.movielib.view.fragments.FavoriteFragment;
 import com.example.sanov.movielib.view.fragments.NowPlayingFragment;
 import com.example.sanov.movielib.view.fragments.UpcomingFragment;
 
@@ -36,6 +37,11 @@ public class MainActivity extends AppCompatActivity {
                             case R.id.action_search:
                                 setViewSearch();
                                 break;
+                            case R.id.action_favorite:
+                                setViewFavorite();
+                                break;
+                            default:
+                                break;
 
                         }
                         return true;
@@ -44,14 +50,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.action_menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -60,6 +63,14 @@ public class MainActivity extends AppCompatActivity {
             startActivity(mIntent);
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void setViewFavorite() {
+        setTitle(getResources().getString(R.string.favorite));
+        FavoriteFragment favoriteFragment = new FavoriteFragment();
+        android.support.v4.app.FragmentTransaction mFragmentTransactionFav = getSupportFragmentManager().beginTransaction();
+        mFragmentTransactionFav.replace(R.id.frame_container, favoriteFragment, FavoriteFragment.class.getSimpleName());
+        mFragmentTransactionFav.commit();
     }
 
     private void setViewSearch() {
