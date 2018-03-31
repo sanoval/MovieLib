@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import com.example.sanov.movielib.BuildConfig;
 import com.example.sanov.movielib.R;
 import com.example.sanov.movielib.adapter.MovieNowPlayingAdapter;
-import com.example.sanov.movielib.api.MovieNowPlayingService;
+import com.example.sanov.movielib.api.MovieService;
 import com.example.sanov.movielib.model.Movie;
 import com.example.sanov.movielib.model.MovieResponse;
 import com.google.gson.Gson;
@@ -55,8 +55,8 @@ public class NowPlayingFragment extends Fragment {
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
-        MovieNowPlayingService service = retrofit.create(MovieNowPlayingService.class);
-        Call<MovieResponse> call = service.listMovie(BuildConfig.API_KEY);
+        MovieService service = retrofit.create(MovieService.class);
+        Call<MovieResponse> call = service.listNowPlaying(BuildConfig.API_KEY);
 
         call.enqueue(new Callback<MovieResponse>() {
             @Override

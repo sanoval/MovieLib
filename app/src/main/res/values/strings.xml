@@ -19,4 +19,10 @@
     <string name="added_to_favorite">ADDED TO FAVORITES</string>
     <string name="removed_from_favorite">REMOVED FROM FAVORITES</string>
     <string name="no_data">FAVORITES LIST IS EMPTY</string>
+    <string name="appwidget_text">My Favorite Movies</string>
+    <string name="add_widget">Add widget</string>
+    <string name="empty_text">You don\'t have favorite movies yet</string>
+    <string name="error_load">Failed to load data. \\n Please check your internet connection!</string>
+    <string name="upcoming_activated">Upcoming reminder notification is now activated</string>
+    <string name="set_reminder">Good morning! Here movie updates for you</string>
 </resources>

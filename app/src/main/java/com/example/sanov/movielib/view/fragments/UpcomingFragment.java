@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +11,7 @@ import android.view.ViewGroup;
 import com.example.sanov.movielib.BuildConfig;
 import com.example.sanov.movielib.R;
 import com.example.sanov.movielib.adapter.MovieUpcomingAdapter;
-import com.example.sanov.movielib.api.MovieUpcomingService;
+import com.example.sanov.movielib.api.MovieService;
 import com.example.sanov.movielib.model.Movie;
 import com.example.sanov.movielib.model.MovieResponse;
 import com.google.gson.Gson;
@@ -57,8 +56,8 @@ public class UpcomingFragment extends Fragment {
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
-        MovieUpcomingService service = retrofit.create(MovieUpcomingService.class);
-        Call<MovieResponse> call = service.listMovie(BuildConfig.API_KEY);
+        MovieService service = retrofit.create(MovieService.class);
+        Call<MovieResponse> call = service.listUpcoming(BuildConfig.API_KEY);
 
         call.enqueue(new Callback<MovieResponse>() {
             @Override

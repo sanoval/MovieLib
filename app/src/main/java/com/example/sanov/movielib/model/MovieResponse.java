@@ -4,7 +4,6 @@ package com.example.sanov.movielib.model;
  * Created by sanov on 2/23/2018.
  */
 
-import com.example.sanov.movielib.model.Movie;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;

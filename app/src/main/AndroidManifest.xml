@@ -4,9 +4,15 @@
     package="com.example.sanov.movielib">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <permission android:name="com.example.sanov.movielib.READ_DATABASE" android:protectionLevel="normal"/>
-    <permission android:name="com.example.sanov.movielib.WRITE_DATABASE" android:protectionLevel="normal"/>
 
+    <permission
+        android:name="com.example.sanov.movielib.READ_DATABASE"
+        android:protectionLevel="normal" />
+    <permission
+        android:name="com.example.sanov.movielib.WRITE_DATABASE"
+        android:protectionLevel="normal" />
+
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -14,7 +20,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.activities.MainActivity">
+        <activity
+            android:name=".view.activities.MainActivity"
+            android:configChanges="orientation|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,19 +33,46 @@
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
         </activity>
-        <activity android:name=".view.activities.MovieDetailActivity"
+        <activity
+            android:name=".view.activities.MovieDetailActivity"
             android:parentActivityName=".view.activities.MainActivity"
             tools:targetApi="jelly_bean" />
-        <activity android:name=".view.activities.MovieSearchActivity"
+        <activity
+            android:name=".view.activities.MovieSearchActivity"
+            android:configChanges="orientation|screenSize"
             android:parentActivityName=".view.activities.MainActivity"
-            tools:targetApi="jelly_bean"/>
+            tools:targetApi="jelly_bean" />
 
         <provider
-            android:authorities="com.example.sanov.movielib"
             android:name=".provider.FavoriteProvider"
+            android:authorities="com.example.sanov.movielib"
             android:exported="true"
             android:readPermission="com.example.sanov.movielib.READ_DATABASE"
-            android:writePermission="com.example.sanov.movielib.WRITE_DATABASE"/>
+            android:writePermission="com.example.sanov.movielib.WRITE_DATABASE" />
+
+        <receiver android:name=".widget.MyFavoriteWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/my_favorite_widget_info" />
+        </receiver>
+
+        <service
+            android:name=".widget.StackWidgetService"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
+
+        <activity android:name=".view.activities.SettingActivity" />
+
+        <receiver
+            android:name=".util.AlarmReceiver"
+            android:enabled="true"
+            android:exported="true" />
+
     </application>
 
 </manifest>

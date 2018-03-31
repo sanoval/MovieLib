@@ -7,18 +7,30 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.example.sanov.movielib.R;
+import com.example.sanov.movielib.util.AlarmReceiver;
+import com.example.sanov.movielib.util.SchedulerTask;
 import com.example.sanov.movielib.view.fragments.FavoriteFragment;
 import com.example.sanov.movielib.view.fragments.NowPlayingFragment;
 import com.example.sanov.movielib.view.fragments.UpcomingFragment;
 
 public class MainActivity extends AppCompatActivity {
 
+    private AlarmReceiver alarmReceiver = new AlarmReceiver();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //create schedular task for notification
+        SchedulerTask schedulerTask = new SchedulerTask(this);
+        schedulerTask.createPeriodicTask();
+
+        alarmReceiver.setRepeatingAlarm(this, AlarmReceiver.TYPE_REPEATING, "07:00", getString(R.string.set_reminder));
+
         setViewNowPlaying();
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);

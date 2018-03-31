@@ -54,7 +54,7 @@ public class MovieUpcomingAdapter extends RecyclerView.Adapter<MovieUpcomingAdap
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onBindViewHolder(MovieUpcoming holder, final int position) {
-        Movie movie = movieUpcoming.get(position);
+        final Movie movie = movieUpcoming.get(position);
         String movieTitle = myHelper.ResizeOverview(movie.getTitle(), "title");
         String movieOverview = myHelper.ResizeOverview(movie.getOverview(), "overview");
         String movieDateRelease = movie.getReleaseDate();
@@ -69,7 +69,7 @@ public class MovieUpcomingAdapter extends RecyclerView.Adapter<MovieUpcomingAdap
             @Override
             public void onClick(View view) {
                 Intent detailMovieIntent = new Intent(context, MovieDetailActivity.class);
-                detailMovieIntent.putExtra(MovieDetailActivity.MOVIE_DATA, movieUpcoming.get(position));
+                detailMovieIntent.putExtra(MovieDetailActivity.MOVIE_DATA, movie);
                 context.startActivity(detailMovieIntent);
             }
         });
