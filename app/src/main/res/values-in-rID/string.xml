@@ -14,4 +14,9 @@
     <string name="rating">Rating:</string>
     <string name="favorite">Favorit</string>
     <string name="no_data">DAFTAR FAVORIT MASIH KOSONG</string>
+    <string name="appwidget_text">Fim Favorit Saya</string>
+    <string name="add_widget">Tambahkan widget</string>
+    <string name="empty_text">Kamu belum memiliki film favorit</string>
+    <string name="error_load">Gagal memuat data, periksa koneksi internet anda!</string>
+    <string name="set_reminder">Selamat pagi! Ada pembaruan untuk anda</string>
 </resources>
